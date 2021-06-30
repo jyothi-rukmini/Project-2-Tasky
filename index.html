@@ -4,105 +4,132 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css"/>
-    <title>Tasky</title>
+
+    <!--poppins-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+
+    
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
+
+    <!--our css-->
+    <link href="style.css" rel="stylesheet"/>
+
+    <!--font awesome-->
+    <script src="https://kit.fontawesome.com/e4c81b6bac.js" crossorigin="anonymous"></script>
+
+    <title >Tasky</title>
+
 </head>
-<body onload="loadData()">
+<body onload="loadInitialCardData()">
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="imageurl" class="form-label" >Image URL</label>
-          <input type="text" class="form-control" id="imageurl" placeholder="https://www.images.com/helloimage.jpg">
+          <label for="imgurl" class="form-label">Image URL</label>
+          <input type="url" class="form-control" id="imgurl" placeholder="http:/example.com/img.jpg"/>
         </div>
         <div class="mb-3">
           <label for="tasktitle" class="form-label">Task Title</label>
-          <input type="text" class="form-control" id="tasktitle" placeholder="Web Development">
+          <input type="text" class="form-control" id="tasktitle" placeholder="Learn Web Dev"/>
         </div>
         <div class="mb-3">
           <label for="tasktype" class="form-label">Task Type</label>
-          <input type="text" class="form-control" id="tasktype" placeholder="Work">
+          <input type="text" class="form-control" id="tasktype" placeholder="Learning web devlopment"/>
         </div>
         <div class="mb-3">
-          <label for="taskdescription" class="form-label">Task Description</label>
-          <textarea rows="6" type="text" class="form-control" id="taskdescription" placeholder="its an amazing experience to learn"></textarea>
+          <label for="taskdes" class="form-label">Task Description</label>
+          <textarea type="text" class="form-control" id="taskdes" placeholder="web devlopment class at 6:00pm"></textarea>
         </div>
       </div>
-      <div class="modal-footer justify-content-start">
+      <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="SaveChanges()" data-bs-dismiss="modal">SaveChanges</button>
+        <button type="button" class="btn btn-primary" onclick="saveChanges()" data-bs-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm p-3 mb-5 bg-body rounded">
+
+ <!-- Modal- Open Task -->
+ <div class="modal fade" id="openModal" tabindex="-1" aria-labelledby="openModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="openModalLabel">My Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="window.location.reload(true)"></button>
+      </div>
+    <div class="modal-body openModalBody">
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="window.location.reload(true)">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+    <!--navbar-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand-primary fw-bold" href="#">Tasky</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <h1 class="fw-bold">
+          <a class="navbar-brand " href="#" style="color: blue;">Tasky</a>
+        </h1>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active " aria-current="page" href="#">home</a>
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
-             
-            </ul>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fas fa-folder-plus"></i>   Add New</button>
           </div>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-plus"></i>  Add new</button>
         </div>
       </nav>
-      <section class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 ">
-          <div class="input-group mb-3 shadow">
-            <input type="text" class="form-control" placeholder="Search Task" aria-label="Search Task" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2"><i class="fab fa-searchengin"></i></span>
-          </div>
-        </div>
-        
-      </div>
-    </div></section>
-    <section class="container">
-      <div class="row task__container"></div>
-    </section>
-        
-       
-        <div class="modal fade" id="example" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <img style="width: 100%;" src="" alt="" class="c1">
-                  <hr>
-                  <h5 contenteditable="false"  class="card-title c2"></h5>
-                  <p contenteditable="false" class="card-text c3" ></p>
-                  <span contenteditable="false" class="badge bg-primary c4"></span>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
+<main class="container">
+
+
+      <!--search-->
+
+      <section class="mt-5 ">
+
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-sm-80 ">
+            <div class="input-group mb-3 shadow-lg">
+              <input type="text" class="form-control" placeholder="Search Task" aria-label="Search Task" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
             </div>
           </div>
         </div>
-   
+      </section>
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>    
+
+
+      <!--Tasks-->
+      <section >
+        <div class="row task__container">
+        </div>
+      </section>
+ </main>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!--Our Java Script-->
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
